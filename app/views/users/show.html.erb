@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-6 ">
+    <p></p>
+    <h1>Usuarios</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+          <tr>
+            <td><%= @user.name %></td>
+            <td><%= @user.email %></td>
+            <td><%= link_to 'Edit', edit_user_path(@user) %></td>
+            <td><%= link_to 'Back', users_path %></td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-6">
+      <p id="notice"><%= notice %></p>
+
+      <h1>Users</h1>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @projects.each do |project| %>
+            <tr>
+              <td><%= project.name %></td>
+              <td><%= project.email %></td>
+              <td><%= link_to 'Add', user_projects_users_path(@user.id, :project_id => project.id), method: :post%></td>
+              <td><%= link_to 'Show', project %></td>
+              <td><%= link_to 'Edit', edit_project_path(project) %></td>
+              <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
